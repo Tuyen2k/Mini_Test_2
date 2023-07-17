@@ -35,16 +35,22 @@ public class CrispyFlour extends Material implements Discount {
 
     @Override
     public double getRealMoney() {
-        long month = ChronoUnit.MONTHS.between(LocalDate.now(), getExpiryDate() );
-
+        long month = ChronoUnit.MONTHS.between(LocalDate.now(), getExpiryDate());
         double realMoney;
+
         if (month <= 2 && month >= 0) {
+            System.out.println("Discount 40%");
             realMoney = getAmount() * (0.6);
         } else if (month <= 4 && month > 2) {
+            System.out.println("Discount 20%");
             realMoney = getAmount() * (0.8);
         } else if (month <= 12 && month > 4) {
+            System.out.println("Discount 5%");
             realMoney = getAmount() * (0.95);
-        } else realMoney = 0;
+        } else {
+            System.out.println("The material has expired!!");
+            realMoney = 0;
+        }
 
         return realMoney;
     }
@@ -55,12 +61,12 @@ public class CrispyFlour extends Material implements Discount {
         return super.toString() + " Quantity: " + quantity;
     }
 
-    public String checkRealMoney(){
+    public String checkRealMoney() {
         getRealMoney();
-        if (getRealMoney() != 0){
+        if (getRealMoney() != 0) {
             return "Real money after discount: " + getRealMoney();
-        }else{
-            return  "The product has expired!!!";
+        } else {
+            return "The product has expired!!!";
         }
     }
 }

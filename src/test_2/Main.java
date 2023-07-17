@@ -49,22 +49,11 @@ public class Main {
                     managerMaterial.displayMaterial();
                     System.out.println("Enter id to delete: ");
                     managerMaterial.deleteMaterial();break;
+                case 5:
+                    System.out.println("Enter name display real money after discount: ");
+                    managerMaterial.displayRealMoney();break;
             }
         } while (choice != 0);
-
-       for(Material element: managerMaterial.getMaterial()){
-           if (element instanceof CrispyFlour){
-               System.out.println("Amount crispyFlour no discount yet: " + element.getAmount());
-               System.out.println("Amount crispyFlour discounted: " + ((CrispyFlour) element).getRealMoney());
-           }
-           else {
-               if (element instanceof Meat){
-                   System.out.println("Amount meat no discount yet: " + element.getAmount());
-                   System.out.println("Amount meat discounted: " + ((Meat) element).getRealMoney());
-               }
-           }
-           System.out.println();
-       }
 
     }
 }

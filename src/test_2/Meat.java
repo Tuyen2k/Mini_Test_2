@@ -35,18 +35,21 @@ public class Meat extends Material implements Discount {
 
     @Override
     public double getRealMoney() {
-        long day = ChronoUnit.DAYS.between(LocalDate.now(),getExpiryDate() );
-
+        long day = ChronoUnit.DAYS.between(LocalDate.now(), getExpiryDate());
         double realMoney;
+
         if (day <= 5 && day >= 0) {
+            System.out.println("Discount 30%");
             realMoney = getAmount() * (0.7);
         } else if (day <= 7 && day > 5) {
+            System.out.println("Discount 10%");
             realMoney = getAmount() * (0.9);
         } else {
+            System.out.println("The material has expired!!");
             realMoney = 0;
         }
 
-      return realMoney;
+        return realMoney;
     }
 
     @Override
